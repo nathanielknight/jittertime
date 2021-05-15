@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <title>Jitter Time</title>
+    <link rel="stylesheet" href="holiday.css">
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            font-family: Verdana, Geneva, sans-serif;
+        }
+
+        main {
+            flex: 1 0 auto;
+        }
+
+        select {
+            width: 6rem;
+        }
+
+        footer {
+            flex-shrink: 0;
+            border-top: 1px solid black;
+            text-align: center;
+            padding: 0.5rem;
+        }
+    </style>
+</head>
+
+<body class="-body" style="max-width: 30em; margin: auto;">
+    <main>
+        <h1>JitterTime</h1>
+        <label>
+            Base Time
+            <input type="time" id="base-time" value="00:00">
+        </label>
+        <fieldset>
+            <legend>Jitter</legend>
+            <div>
+                <select id="jitter-amount">
+                    <option name="amount" value="1">1</option>
+                    <option name="amount" value="3">3</option>
+                    <option name="amount" value="6">6</option>
+                    <option name="amount" value="12">12</option>
+                    <option name="amount" value="24">24</option>
+                </select>
+            </div>
+            <div>
+                <select id="jitter-unit">
+                    <option name="amount" value="s">seconds</option>
+                    <option name="amount" value="m">minutes</option>
+                    <option name="amount" value="h">hours</option>
+                    <option name="amount" value="d">days</option>
+                </select>
+            </div>
+
+        </fieldset>
+        <p>Your jittered time is <span id="output" style="font-family: monospace;"></span></p>
+        <button id="generate">Jitter!</button>
+    </main>
+    <footer>A webtool by <a href="https://nathanielknight.ca">Nathaniel Knight ♘</a></footer>
+
+    <script type="module">
+        import init, { generate } from "./randomtime.js";
+
+        function gen() {
+            const timeInput = document.getElementById("base-time");
+            const jitterAmount = parseInt(document.getElementById("jitter-amount").value);
+            const unitInput = document.getElementById("jitter-unit");
+            const jittered = generate(timeInput.value, jitterAmount, unitInput.value);
+
+            const outputTarget = document.getElementById("output");
+            outputTarget.innerText = jittered;
+        }
+
+        async function main() {
+            await init();
+            const btn = document.getElementById("generate");
+            btn.onclick = gen;
+        }
+
+        main();
+    </script>
+</body>
+
+</html>

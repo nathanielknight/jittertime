@@ -1,0 +1,21 @@
+(task "build"
+    "Build in development mode"
+    (empty-dir "release")
+    (rec-copy "static" "release")
+    (exec cargo build --target wasm32-unknown-unknown)
+    (exec wasm-bindgen --target web --out-dir release ./target/wasm32-unknown-unknown/debug/randomtime.wasm)
+)
+
+(task "build-release"
+    "Build in release mode"
+    (empty-dir "release")
+    (rec-copy "static" "release")
+    (exec cargo build --release --target wasm32-unknown-unknown)
+    (exec wasm-bindgen --target web --out-dir release ./target/wasm32-unknown-unknown/release/randomtime.wasm)
+)
+
+
+(task "clean"
+    "Empty the release/ directory"
+    (empty-dir "release")
+)
