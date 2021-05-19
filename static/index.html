@@ -61,21 +61,22 @@
             </div>
         </fieldset>
         <button id="generate">Jitter!</button>
-        <p>Your jittered time is</p>
-	<p><span id="output" style="font-family: monospace;"></span></p>
-	<p>
-	    Enter your base time and a jitter period; this tool will add a random amount
-	    of time (not more than the jitter period) to the base time.
-	</p>
-	<p>
-	    The idea is that when you're scheduling an automated task (e.g. scraping a web-page,
-	    taking a backup, etc.) you might want to perform the task every hour, but if you
-	    schedule it exactly <em>on</em> the hour, you're unintentionally coordinating
-	    with other folks who might also be doing that task, which could overwhelm any
-	    systems you might be interacting with. Adding a bit of genuine randomness prevents
-	    that.
-	</p>
+        <p>Your jittered time is:</p>
+        <p><span id="output" style="font-family: monospace;">00:00:00</span></p>
+        <p>
+            Enter your base time and a jitter period; this tool will add a random amount
+            of time (not more than the jitter period) to the base time.
+        </p>
+        <p>
+            The idea is that when you're scheduling an automated task (e.g. scraping a web-page,
+            taking a backup, etc.) you might want to perform the task every hour, but if you
+            schedule it exactly <em>on</em> the hour, you're unintentionally coordinating
+            with other folks who might also be doing that task, which could overwhelm any
+            systems you might be interacting with. Adding a bit of genuine randomness prevents
+            that.
+        </p>
     </main>
+
     <footer>A webtool by <a href="https://nathanielknight.ca">Nathaniel Knight ♘</a></footer>
 
     <script type="module">
