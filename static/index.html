@@ -41,7 +41,7 @@
             <input type="time" id="base-time" value="00:00">
         </label>
         <fieldset>
-            <legend>Jitter</legend>
+            <legend>Jitter Period</legend>
             <div>
                 <select id="jitter-amount">
                     <option name="amount" value="1">1</option>
@@ -59,10 +59,10 @@
                     <option name="amount" value="d">days</option>
                 </select>
             </div>
-
         </fieldset>
-        <p>Your jittered time is <span id="output" style="font-family: monospace;"></span></p>
         <button id="generate">Jitter!</button>
+        <p>Your jittered time is</p>
+	<p><span id="output" style="font-family: monospace;"></span></p>
 	<p>
 	    Enter your base time and a jitter period; this tool will add a random amount
 	    of time (not more than the jitter period) to the base time.
